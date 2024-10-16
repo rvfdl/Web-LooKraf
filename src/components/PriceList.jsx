@@ -4,7 +4,7 @@ import React from "react";
 const PriceList = () => {
   // Fungsi untuk mengarahkan ke WhatsApp dengan pesan yang sudah diatur
   const handleOrderClick = (packageType) => {
-    const phoneNumber = "085747485067"; // Ganti dengan nomor WhatsApp Anda
+    const phoneNumber = "6285747485067"; // Ganti dengan nomor WhatsApp Anda
     const message = `Halo, saya tertarik dengan ${packageType}`;
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
