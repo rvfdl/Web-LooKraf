@@ -7,7 +7,7 @@ const About = () => (
       {/* Kolom Kiri - Gambar Logo */}
       <div className="md:w-1/2 mb-8 md:mb-0">
         <img
-          src="./src/assets/lookraflogohtm.png" // Ganti dengan path gambar logo Anda
+          src="/lookraflogohtm.png" // Ganti dengan path gambar logo Anda
           alt="Logo"
           className="w-full h-auto" // Atur ukuran dan gaya gambar sesuai kebutuhan
         />

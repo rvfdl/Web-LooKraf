@@ -11,7 +11,7 @@ const Gallery = () => (
         {Array.from({ length: 5 }).map((_, index) => (
           <img
             key={index}
-            src="./src/assets/comingsoon.png"
+            src="/comingsoon.png"
             alt={`Logo ${index + 1}`}
             className="shadow-lg rounded-lg bg-white max-w-[150px] md:max-w-[200px] m-2"
           />
@@ -20,7 +20,7 @@ const Gallery = () => (
         {Array.from({ length: 5 }).map((_, index) => (
           <img
             key={index + 5} // Ensure unique keys for each image
-            src="./src/assets/comingsoon.png"
+            src="/comingsoon.png"
             alt={`Logo ${index + 6}`}
             className="shadow-lg rounded-lg bg-white max-w-[150px] md:max-w-[200px] m-2"
           />
