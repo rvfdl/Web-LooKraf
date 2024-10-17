@@ -22,7 +22,7 @@ const PriceList = () => {
     }
 
     const phoneNumber = "6285747485067"; // Ganti dengan nomor WhatsApp Anda
-    let message = `Halo, saya tertarik dengan *${packageType}.* \n*Nama Usaha:* ${businessName}.\n*Deskripsi:* ${description}.\n*Warna Yang Digunakan:* ${color}`;
+    let message = `Halo, saya tertarik dengan *${packageType}.* \n*Nama Usaha:* ${businessName}.\n*Deskripsi:* ${description}.\n*Warna:* ${color}`;
 
     // Tambahkan slogan jika ada
     if (slogan) {
@@ -62,7 +62,9 @@ const PriceList = () => {
       <div className="overflow-x-auto mx-4 md:mx-0">
         <div className="flex space-x-4 md:grid md:grid-cols-3 gap-8 text-black md:justify-items-center">
           <div className="bg-[#222222] border border-white shadow-black rounded-lg p-6 w-80 min-w-[300px]">
-            <h3 className="text-xl font-bold mb-2 text-white text-center">Paket Basic</h3>
+            <h3 className="text-xl font-bold mb-2 text-white text-center">
+              Paket Basic
+            </h3>
             <p className="text-white text-center">Rp 199.000</p>
             <br />
             <hr className="border-white" />
@@ -89,7 +91,9 @@ const PriceList = () => {
           </div>
 
           <div className="bg-[#222222] border border-white shadow-black rounded-lg p-6 w-80 min-w-[300px]">
-            <h3 className="text-xl font-bold mb-2 text-white text-center">Paket Standard</h3>
+            <h3 className="text-xl font-bold mb-2 text-white text-center">
+              Paket Standard
+            </h3>
             <p className="text-white text-center">Rp 399.000</p>
             <br />
             <hr className="border-white" />
@@ -116,7 +120,9 @@ const PriceList = () => {
           </div>
 
           <div className="bg-[#222222] border border-white shadow-black rounded-lg p-6 w-80 min-w-[300px]">
-            <h3 className="text-xl font-bold mb-2 text-white text-center">Paket Premium</h3>
+            <h3 className="text-xl font-bold mb-2 text-white text-center">
+              Paket Premium
+            </h3>
             <p className="text-white text-center">Rp 599.000</p>
             <br />
             <hr className="border-white" />
