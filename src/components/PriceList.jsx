@@ -1,16 +1,51 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 
 const PriceList = () => {
-  // Fungsi untuk mengarahkan ke WhatsApp dengan pesan yang sudah diatur
-  const handleOrderClick = (packageType) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [packageType, setPackageType] = useState("");
+  const [businessName, setBusinessName] = useState("");
+  const [slogan, setSlogan] = useState("");
+  const [description, setDescription] = useState("");
+  const [color, setColor] = useState("");
+
+  // Fungsi untuk membuka modal dan set jenis paket
+  const handleOrderClick = (selectedPackage) => {
+    setPackageType(selectedPackage);
+    setIsModalOpen(true);
+  };
+
+  // Fungsi untuk mengirim pesan ke WhatsApp setelah form di-submit
+  const handleSubmit = () => {
+    if (!businessName || !description || !color) {
+      alert("Nama usaha, deskripsi, dan warna tidak boleh kosong!");
+      return;
+    }
+
     const phoneNumber = "6285747485067"; // Ganti dengan nomor WhatsApp Anda
-    const message = `Halo, saya tertarik dengan ${packageType}`;
+    let message = `Halo, saya tertarik dengan ${packageType}. \nNama Usaha: ${businessName}.\nDeskripsi: ${description}.\nWarna yang digunakan: ${color}`;
+
+    // Tambahkan slogan jika ada
+    if (slogan) {
+      message += `\nSlogan: ${slogan}`;
+    }
+
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
 
     window.open(whatsappURL, "_blank");
+
+    // Tutup modal setelah pesan dikirim
+    setIsModalOpen(false);
+    resetForm();
+  };
+
+  // Fungsi untuk mereset form setelah submit
+  const resetForm = () => {
+    setBusinessName("");
+    setSlogan("");
+    setDescription("");
+    setColor("");
   };
 
   return (
@@ -24,10 +59,8 @@ const PriceList = () => {
         Ini adalah pricelist untuk jasa desain logo kami. Untuk desain lainnya,
         bisa kontak langsung ke kami.
       </p>
-      {/* Mengatur overflow untuk tampilan mobile */}
       <div className="overflow-x-auto mx-4 md:mx-0">
         <div className="flex space-x-4 md:grid md:grid-cols-3 gap-8 text-black md:justify-items-center">
-          {/* Paket Basic */}
           <div className="bg-[#222222] border border-white shadow-black rounded-lg p-6 w-80 min-w-[300px]">
             <h3 className="text-xl font-bold mb-2 text-white text-center">Paket Basic</h3>
             <p className="text-white text-center">Rp 199.000</p>
@@ -55,7 +88,6 @@ const PriceList = () => {
             </div>
           </div>
 
-          {/* Paket Standard */}
           <div className="bg-[#222222] border border-white shadow-black rounded-lg p-6 w-80 min-w-[300px]">
             <h3 className="text-xl font-bold mb-2 text-white text-center">Paket Standard</h3>
             <p className="text-white text-center">Rp 399.000</p>
@@ -83,7 +115,6 @@ const PriceList = () => {
             </div>
           </div>
 
-          {/* Paket Premium */}
           <div className="bg-[#222222] border border-white shadow-black rounded-lg p-6 w-80 min-w-[300px]">
             <h3 className="text-xl font-bold mb-2 text-white text-center">Paket Premium</h3>
             <p className="text-white text-center">Rp 599.000</p>
@@ -112,6 +143,58 @@ const PriceList = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full z-50 text-black">
+            <h3 className="text-xl font-bold mb-4">Isi Informasi Pesanan</h3>
+            <label className="block mb-2">Nama Usaha:</label>
+            <input
+              type="text"
+              value={businessName}
+              onChange={(e) => setBusinessName(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+            />
+            <label className="block mb-2">Slogan (opsional):</label>
+            <input
+              type="text"
+              value={slogan}
+              onChange={(e) => setSlogan(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+            />
+            <label className="block mb-2">Deskripsi Usaha:</label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+            />
+            <label className="block mb-2">Warna yang Digunakan:</label>
+            <input
+              type="text"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+            />
+            <div className="flex justify-end space-x-4">
+              <button
+                className="bg-gray-500 text-white py-2 px-4 rounded-lg"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Batal
+              </button>
+              <button
+                className="bg-blue-500 text-white py-2 px-4 rounded-lg"
+                onClick={handleSubmit}
+              >
+                Kirim
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
