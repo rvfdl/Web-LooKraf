@@ -22,11 +22,11 @@ const PriceList = () => {
     }
 
     const phoneNumber = "6285747485067"; // Ganti dengan nomor WhatsApp Anda
-    let message = `Halo, saya tertarik dengan ${packageType}. \nNama Usaha: ${businessName}.\nDeskripsi: ${description}.\nWarna yang digunakan: ${color}`;
+    let message = `Halo, saya tertarik dengan *${packageType}.* \n*Nama Usaha:* ${businessName}.\n*Deskripsi:* ${description}.\n*Warna Yang Digunakan:* ${color}`;
 
     // Tambahkan slogan jika ada
     if (slogan) {
-      message += `\nSlogan: ${slogan}`;
+      message += `\n*Slogan:* ${slogan}`;
     }
 
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
